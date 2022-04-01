@@ -1,4 +1,4 @@
-const { Client, Intents, DiscordAPIError, Collection } = require('discord.js');
+const { Client, Intents, Collection } = require('discord.js');
 const client = new Client({
 	intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS],
 	partials: ['MESSAGE', 'CHANNEL', 'REACTION'],

@@ -1,36 +1,23 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed, Client, Message, Cha, Interaction } = require('discord.js');
-
+const { createReactionroleMessage } = require('../functions/reactionroles/createReactionroleMessage');
+/*
+GuildMember
+GuildMemberRoleManager
+*/
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('reactionroles')
 		.setDescription('Reaction roles'),
 	async execute(interaction, client) {
-
-		const TarkovRole = interaction.guild.roles.cache.find(role => role.name === 'Tarkov');
-		const HoiRole = interaction.guild.roles.cache.find(role => role.name === 'HOI');
-
-		// TODO: change into a dictionary?
-		const Tarkov = '🌟';
-		const Hoi = '🌱';
-
-		const channelID = interaction.channelId;
-		const channel = interaction.channel;
 		console.log(`Reaction roles triggered in channel ${interaction.channel.name} by ${interaction.user.tag}`);
 
-		// MESSAGE EMBED
-		const embed = new MessageEmbed()
-			.setColor('#0099ff')
-			.setTitle('Get your roles here!')
-			.setDescription(`
-				Click the reactions to get your roles!\n\n
-				${Tarkov} Tarkov\n
-				${Hoi} HOI
-			`);
+		const channel = interaction.channel.id;
+		const messageID = createReactionroleMessage(interaction.channel);
 
-		const mes = await channel.send({ embeds: [embed] });
-		mes.react(Tarkov);
-		mes.react(Hoi);
+		const dict = {
+			'🌟': 'Tarkov',
+			'🌱': 'HOI',
+		};
 
 		// Messy, optimise later
 		client.on('messageReactionAdd', async (reaction, user) => {
@@ -38,23 +25,18 @@ module.exports = {
 			if (reaction.message.partial) await reaction.message.fetch();
 			if (reaction.partial) await reaction.fetch();
 
-			console.log('test');
-			if (reaction.message.channel.id == channel) {
-				switch (reaction.emoji.name) {
-				case Tarkov:
-					if (reaction.me) {
-						await reaction.message.guild.members.cache.get(user.id).roles.add(TarkovRole);
-					}
-					else {
-						await reaction.message.guild.members.cache.get(user.id).roles.remove(TarkovRole);
-					}
-					console.log('Tarkov');
-					break;
-				case Hoi:
-					await reaction.message.guild.members.cache.get(user.id).roles.add(HoiRole);
-					console.log('Hoi');
-					break;
+			if (reaction.message.channel.id == channel && reaction.emoji.name in dict) {
+				const r = interaction.guild.roles.cache.find(role => role.name === dict[reaction.emoji.name]);
+				const gMember = reaction.message.guild.members.cache.get(user.id);
+
+				console.log(`${gMember.roles.cache.has(r.id)}`);
+				if (gMember.roles.cache.has(r.id)) {
+					await reaction.message.guild.members.cache.get(user.id).roles.remove(r);
 				}
+				else {
+					await reaction.message.guild.members.cache.get(user.id).roles.add(r);
+				}
+				reaction.users.remove(user);
 			}
 		});
 		await interaction.reply({ content: 'Reaction role embed created!', ephemeral: true });
