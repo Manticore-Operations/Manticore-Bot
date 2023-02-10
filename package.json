@@ -5,19 +5,17 @@
   "main": "main.js",
   "scripts": {
     "lint": "eslint . --fix",
-    "dev": "nodemon --exec \"npm run lint && npm start\"",
+    "dev-lint": "nodemon --exec \"npm run lint && npm start\"",
+    "dev": "nodemon --exec \"npm start\"",
     "start": "node ./main.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/builders": "^0.11.0",
-    "@discordjs/rest": "^0.1.0-canary.0",
-    "discord-api-types": "^0.22.0",
-    "discord.js": "^13.1.0"
+    "discord.js": "^14.7.1"
   },
   "devDependencies": {
     "eslint": "^8.5.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.20"
   }
 }
