@@ -1,4 +1,6 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+// CURRENTLY BROKEN
+
+const { SlashCommandBuilder } = require('discord.js');
 const { createReactionroleMessage } = require('../functions/reactionroles/createReactionroleMessage');
 /*
 GuildMember

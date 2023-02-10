@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 async function createReactionroleMessage(channel) {
 
@@ -6,7 +6,7 @@ async function createReactionroleMessage(channel) {
 	const Tarkov = '🌟';
 	const Hoi = '🌱';
 
-	const embed = new MessageEmbed()
+	const embed = new EmbedBuilder()
 		.setColor('#0099ff')
 		.setTitle('Get your roles here!')
 		.setDescription(`
