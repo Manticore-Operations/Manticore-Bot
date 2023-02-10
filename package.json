@@ -1,0 +1,21 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "lint": "eslint . --fix",
+    "dev-lint": "nodemon --exec \"npm run lint && npm start\"",
+    "dev": "nodemon --exec \"npm start\"",
+    "start": "node ./main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "nodemon": "^2.0.20"
+  }
+}
