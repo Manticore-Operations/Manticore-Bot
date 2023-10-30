@@ -1,7 +1,7 @@
 // CURRENTLY BROKEN
 
 const { SlashCommandBuilder } = require('discord.js');
-const { createReactionroleMessage } = require('../functions/reactionroles/createReactionroleMessage');
+// const { createReactionroleMessage } = require('../functions/reactionroles/createReactionroleMessage');
 /*
 GuildMember
 GuildMemberRoleManager
@@ -14,7 +14,7 @@ module.exports = {
 		console.log(`Reaction roles triggered in channel ${interaction.channel.name} by ${interaction.user.tag}`);
 
 		const channel = interaction.channel.id;
-		const messageID = createReactionroleMessage(interaction.channel);
+		// const messageID = createReactionroleMessage(interaction.channel);
 
 		const dict = {
 			'🌟': 'Tarkov',

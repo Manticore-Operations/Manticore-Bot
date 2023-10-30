@@ -25,7 +25,7 @@ const wipeCommands = async () => {
 		.then(() => logger.log('wipeCommands', 'Successfully deleted all application commands.'))
 		.catch(console.error);
 
-	logger.log('wipeCommands', `commands successfully wiped`);
+	logger.log('wipeCommands', 'commands successfully wiped');
 };
 
 const resetCommands = async () => {

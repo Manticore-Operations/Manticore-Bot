@@ -13,12 +13,13 @@ const main = async () => {
 	await dp.deployCommands();
 
 	// TODO: move to a better place
-	logger.log('main', `Adding ${commands.length} commands to client`)
+	logger.log('main', `Adding ${commands.length} commands to client`);
 	for (const command of commands) {
 		if ('data' in command && 'execute' in command) {
 			client.commands.set(command.data.name, command);
 			logger.log('main', `Command ${command.data.name} added`);
-		} else {
+		}
+		else {
 			logger.log('main', `[WARNING] The command ${command} is missing a required "data" or "execute" property.`);
 		}
 	}
@@ -34,11 +35,13 @@ const main = async () => {
 
 		try {
 			await command.execute(interaction);
-		} catch (error) {
+		}
+		catch (error) {
 			console.error(error);
 			if (interaction.replied || interaction.deferred) {
 				await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
-			} else {
+			}
+			else {
 				await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 			}
 		}
@@ -50,6 +53,6 @@ const main = async () => {
 
 	// Has to be at the bottom of the file
 	client.login(TOKEN);
-}
+};
 
 main();
