@@ -1,7 +1,9 @@
 // CURRENTLY BROKEN
 
 const { SlashCommandBuilder } = require('discord.js');
-// const { createReactionroleMessage } = require('../functions/reactionroles/createReactionroleMessage');
+const embed = require('../helpers/embed');
+const games = require('../embeds/reactionroles/games.json');
+
 /*
 GuildMember
 GuildMemberRoleManager
@@ -13,16 +15,13 @@ module.exports = {
 	async execute(interaction, client) {
 		console.log(`Reaction roles triggered in channel ${interaction.channel.name} by ${interaction.user.tag}`);
 
-		const channel = interaction.channel.id;
+		const channel = client.channels.cache.get(interaction.channel.id);
+		embed.post(channel, games);
 		// const messageID = createReactionroleMessage(interaction.channel);
 
-		const dict = {
-			'🌟': 'Tarkov',
-			'🌱': 'HOI',
-		};
 
 		// Messy, optimise later
-		client.on('messageReactionAdd', async (reaction, user) => {
+		/* 		client.on('messageReactionAdd', async (reaction, user) => {
 			if (user.bot || !reaction.message.guild) return;
 			if (reaction.message.partial) await reaction.message.fetch();
 			if (reaction.partial) await reaction.fetch();
@@ -40,7 +39,7 @@ module.exports = {
 				}
 				reaction.users.remove(user);
 			}
-		});
+		}); */
 		await interaction.reply({ content: 'Reaction role embed created!', ephemeral: true });
 	},
 };
