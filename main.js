@@ -4,21 +4,23 @@ const dp = require('./deployCommands');
 const { TOKEN } = require('./config');
 const index = require('./commands/index');
 const { utcNow } = require('./helpers/date');
+const { Logger } = require('./services/logger');
 
 client.commands = new Collection();
 const commands = Object.values(index);
+const logger = new Logger();
 
 const main = async () => {
 	await dp.deployCommands();
 
 	// TODO: move to a better place
-	console.log(`${utcNow()} - main - Adding ${commands.length} commands to client`)
+	logger.log('main', `Adding ${commands.length} commands to client`)
 	for (const command of commands) {
 		if ('data' in command && 'execute' in command) {
 			client.commands.set(command.data.name, command);
-			console.log(`${utcNow()} - main - Command ${command.data.name} added`);
+			logger.log('main', `Command ${command.data.name} added`);
 		} else {
-			console.log(`[WARNING] The command ${command} is missing a required "data" or "execute" property.`);
+			logger.log('main', `[WARNING] The command ${command} is missing a required "data" or "execute" property.`);
 		}
 	}
 
@@ -27,7 +29,7 @@ const main = async () => {
 		const command = interaction.client.commands.get(interaction.commandName);
 
 		if (!command) {
-			console.error(`No command matching ${interaction.commandName} was found.`);
+			console.error('main', `No command matching ${interaction.commandName} was found.`);
 			return;
 		}
 
@@ -44,7 +46,7 @@ const main = async () => {
 	});
 
 	client.on('ready', () => {
-		console.log(`Logged in as ${client.user.tag}!`);
+		logger.log('main', `Logged in as ${client.user.tag}!`);
 	});
 
 	// Has to be at the bottom of the file

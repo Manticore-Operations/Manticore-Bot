@@ -1,7 +1,8 @@
 const { REST, Routes } = require('discord.js');
 const { TOKEN, CLIENT_ID, GUILD_ID } = require('./config.json');
 const index = require('./commands/index');
-const { utcNow } = require('./helpers/date');
+const { Logger } = require('./services/logger');
+const logger = new Logger();
 
 // Construct and prepare an instance of the REST module
 const createRest = () => {
@@ -12,30 +13,30 @@ const validateConfig = () => {
 	if (!GUILD_ID) throw Error('Guild ID not defined!');
 }
 const wipeCommands = async () => {
-	console.log(`${utcNow()} - wipeCommands - START`);
+	logger.log('wipeCommands', 'START');
 	validateConfig();
 	const rest = createRest();
 
 	await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), { body: [] })
-		.then(() => console.log(`${utcNow()} - wipeCommands - Successfully deleted all guild commands.`))
+		.then(() => logger.log('wipeCommands', `Successfully deleted all guild commands.`))
 		.catch(console.error);
 
 	await rest.put(Routes.applicationCommands(CLIENT_ID), { body: [] })
-		.then(() => console.log(`${utcNow()} - wipeCommands - Successfully deleted all application commands.`))
+		.then(() => logger.log('wipeCommands', `Successfully deleted all application commands.`))
 		.catch(console.error);
 
-	console.log(`${utcNow()} - wipeCommands - commands successfully wiped`);
+		logger.log(`${utcNow()} - wipeCommands - commands successfully wiped`);
 }
 
 const resetCommands = async () => {
-	console.log(`${utcNow()} - resetCommands - START`);
+	logger.log('resetCommands', 'START');
 	await wipeCommands();
 	deployCommands();
-	console.log(`${utcNow()} - resetCommands - all commands successfully reset`);
+	logger.log('resetCommands', 'All commands successfully reset');
 }
 
 const deployCommands = async () => {
-	console.log(`${utcNow()} - deployCommands - START`);
+	logger.log('deployCommands', 'START');
 	validateConfig();
 	const rest = createRest();
 
@@ -43,7 +44,7 @@ const deployCommands = async () => {
 
 	(async () => {
 		try {
-			console.log(`${utcNow()} - deployCommands - Started refreshing ${commands.length} application (/) commands.`);
+			logger.log('deployCommands', `Started refreshing ${commands.length} application (/) commands.`);
 
 			// The put method is used to fully refresh all commands in the guild with the current set
 			const data = await rest.put(
@@ -51,9 +52,9 @@ const deployCommands = async () => {
 				{ body: commands },
 			);
 
-			console.log(`${utcNow()} - deployCommands - Successfully reloaded ${data.length} application (/) commands.`);
+			logger.log('deployCommands', `Successfully reloaded ${data.length} application (/) commands.`);
 		} catch (error) {
-			console.error(`${utcNow()} - deployCommands - Command deployment failed`);
+			console.error('deployCommands', 'Command deployment failed');
 			console.error(error);
 		}
 	})();
