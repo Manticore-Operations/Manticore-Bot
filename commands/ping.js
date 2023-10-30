@@ -1,4 +1,4 @@
-/* const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -8,4 +8,3 @@ module.exports = {
 		await interaction.reply({ content: 'Pong!', ephemeral: true });
 	},
 };
- */
