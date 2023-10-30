@@ -3,7 +3,6 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const dp = require('./deployCommands');
 const { TOKEN } = require('./config');
 const index = require('./commands/index');
-const { utcNow } = require('./helpers/date');
 const { Logger } = require('./services/logger');
 
 client.commands = new Collection();

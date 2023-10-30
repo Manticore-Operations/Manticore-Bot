@@ -1,7 +1,7 @@
 const utcNow = () => {
-    return new Date().toUTCString();
-}
+	return new Date().toUTCString();
+};
 
 module.exports = {
-    utcNow
-}
+	utcNow,
+};

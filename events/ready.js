@@ -1,4 +1,5 @@
 const { Logger } = require('../services/logger');
+const logger = new Logger();
 
 module.exports = {
 	name: 'ready',
