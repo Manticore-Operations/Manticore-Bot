@@ -1,7 +1,7 @@
 const ping = require('./ping');
-const reactionroles = require('./reactionroles');
+const postEmbed = require('./postEmbed');
 
 module.exports = {
 	ping,
-	reactionroles,
+	postEmbed,
 };

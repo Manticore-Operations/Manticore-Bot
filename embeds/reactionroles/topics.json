@@ -1,27 +1,31 @@
 {
-    "title": "Topics",
-    "description": "These roles are for general topics you want to be pinged about",
-    "color": 6989903,
-    "fields": [
-        {
-        "name": "🎮Gaming Invitations",
-        "value": "A role that can be pinged for general gaming get-togethers in #game-invitations"
-        },
-        {
-        "name": "<:zeus:1165281721764282379>  Mission Design",
-        "value": "Can be used to ping people for general topics in the mission making channels, such as #design-discussion."
-        },
-        {
-        "name": "🛩️ Flying",
-        "value": "Gives you access to the flight sim chat where flying is discussed and game sessions are organised."
-        },
-        {
-        "name": "🏎️ Racing",
-        "value": "Gives you access to the racing chat where racing is discussed and gaming session are organised."
-        }
-    ],
-    "footer": {
-        "text": "Manticore"
-    },
-    "timestamp": "2023-10-21T14:57:00.000Z"
+	"content": "Posted an actually custom coded MantiBot (for real this time)",
+	"title": "Topics",
+	"description": "These roles are for general topics you want to be pinged about",
+	"color": 6989903,
+	"fields": [
+		{
+		"name": "🎮Gaming Invitations",
+		"value": "A role that can be pinged for general gaming get-togethers in #game-invitations"
+		},
+		{
+		"name": "<:zeus:1165281721764282379>  Mission Design",
+		"value": "Can be used to ping people for general topics in the mission making channels, such as #design-discussion."
+		},
+		{
+		"name": "🛩️ Flying",
+		"value": "Gives you access to the flight sim chat where flying is discussed and game sessions are organised."
+		},
+		{
+		"name": "🏎️ Racing",
+		"value": "Gives you access to the racing chat where racing is discussed and gaming session are organised."
+		}
+	],
+	"footer": {
+		"text": "Manticore"
+	},
+	"timestamp": "2023-10-21T14:57:00.000Z",
+	"image": {
+		"url": "https://cdn.discordapp.com/attachments/815736831874039808/1168645720748871732/20231025170049_1.png?ex=65528524&is=65401024&hm=49b987c1af1d3fd52349419e3c3cbc893afbb047634e82caf053c300f23e1894&"
+	}
 }

@@ -1,27 +1,27 @@
 {
-    "title": "Games",
-    "description": "These roles are for specific games you want to be pinged about in #game-invitations",
-    "color": 6989903,
-    "fields": [
-        {
-        "name": "<:arma:1165315488860090368> Arma",
-        "value": "⠀Antistasi, Dynamic Recon Ops, Liberation and etc"
-        },
-        {
-        "name": "<:HOI:1020477874207207454> Hearts of Iron",
-        "value": "⠀HOI campaigns and such"
-        },
-        {
-        "name": "<:squad:1020477995103830016> Squad",
-        "value": "⠀Squad sessions"
-        },
-        {
-        "name": "<:CounterStrike:1158835065502060625> Counter-Strike",
-        "value": "⠀Counter-Strike sessions"
-        }
-    ],
-    "footer": {
-        "text": "Manticore"
-    },
-    "timestamp": "2023-10-21T14:57:00.000Z"
+	"title": "Games",
+	"description": "These roles are for specific games you want to be pinged about in #game-invitations",
+	"color": 6989903,
+	"fields": [
+		{
+		"name": "<:arma:1165315488860090368> Arma",
+		"value": "⠀Antistasi, Dynamic Recon Ops, Liberation and etc"
+		},
+		{
+		"name": "<:HOI:1020477874207207454> Hearts of Iron",
+		"value": "⠀HOI campaigns and such"
+		},
+		{
+		"name": "<:squad:1020477995103830016> Squad",
+		"value": "⠀Squad sessions"
+		},
+		{
+		"name": "<:CounterStrike:1158835065502060625> Counter-Strike",
+		"value": "⠀Counter-Strike sessions"
+		}
+	],
+	"footer": {
+		"text": "Manticore"
+	},
+	"timestamp": "2023-10-21T14:57:00.000Z"
 }
