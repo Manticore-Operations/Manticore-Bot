@@ -1,9 +1,6 @@
 # Discord bot
 config.json
 
-# Packages
-package-lock.json
-
 # Logs
 logs
 *.log
